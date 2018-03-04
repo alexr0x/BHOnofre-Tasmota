@@ -33,7 +33,7 @@ See [Wiki](https://github.com/arendst/Sonoff-Tasmota/wiki) for more information.
 See [Community](https://groups.google.com/d/forum/sonoffusers) for forum and more user experience.
 
 Os Seguintes dispositivos são Suportados:
-- [BH OnOfre](http://www.bhonofre.pt/javax.faces.resource/images/onofre.png.xhtml?ln=apollo-layout)
+- [BH OnOfre](http://www.bhonofre.pt)<img src="http://www.bhonofre.pt/javax.faces.resource/images/onofre.png.xhtml?ln=apollo-layout" width="250" align="right" />
 - [iTead Sonoff Basic](https://www.itead.cc/smart-home/sonoff-wifi-wireless-switch-1.html)
 - [iTead Sonoff RF](https://www.itead.cc/smart-home/sonoff-rf.html)
 - [iTead Sonoff SV](https://www.itead.cc/smart-home/sonoff-sv.html)<img src="https://github.com/arendst/arendst.github.io/blob/master/media/sonoff_th.jpg" width="250" align="right" />
