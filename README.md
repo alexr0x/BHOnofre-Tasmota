@@ -32,7 +32,8 @@ You should now have a device with 32k more code memory to play with.
 See [Wiki](https://github.com/arendst/Sonoff-Tasmota/wiki) for more information.<br />
 See [Community](https://groups.google.com/d/forum/sonoffusers) for forum and more user experience.
 
-The following devices are supported:
+Os Seguintes dispositivos são Suportados:
+- [BH OnOfre](http://www.bhonofre.pt/javax.faces.resource/images/onofre.png.xhtml?ln=apollo-layout)
 - [iTead Sonoff Basic](https://www.itead.cc/smart-home/sonoff-wifi-wireless-switch-1.html)
 - [iTead Sonoff RF](https://www.itead.cc/smart-home/sonoff-rf.html)
 - [iTead Sonoff SV](https://www.itead.cc/smart-home/sonoff-sv.html)<img src="https://github.com/arendst/arendst.github.io/blob/master/media/sonoff_th.jpg" width="250" align="right" />
