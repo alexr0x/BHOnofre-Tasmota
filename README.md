@@ -1,7 +1,7 @@
 ### BH OnOfre -Tasmota
 
 Fornece ao BH OnOfre ou Sonoff baseados em ESP8266 um firmware com Interface Web, MQTT e OTA usando Arduino IDE ou PlatformIO
-[YOUTUBE - O que é o OnOfre] (https://youtu.be/OZenBfHWtak)
+[YOUTUBE - O que é o OnOfre](https://youtu.be/OZenBfHWtak)
 ### Atenção BH OnOfre
 
 Flashar com o Arduino IDE com as Seguintes opções:
