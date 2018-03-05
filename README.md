@@ -11,31 +11,20 @@ Flashar com o Arduino IDE com as Seguintes opções:
 
 Provide ESP8266 based Sonoff by [iTead Studio](https://www.itead.cc/) and ElectroDragon IoT Relay with Serial, Web and MQTT control allowing 'Over the Air' or OTA firmware updates using Arduino IDE.
 
-### ATTENTION Version 5 and up
 
-These versions use a new linker script to free flash memory for future code additions. It moves the settings from Spiffs to Eeprom. If you compile your own firmware download the new linker to your IDE or Platformio base folder. See [Wiki > Prerequisite](https://github.com/arendst/Sonoff-Tasmota/wiki/Prerequisite).
+### Informação de Verções
 
-Best practice to implement is:
-- Open the webpage to your device
-- Perform option ``Backup Configuration``
-- Upgrade new firmware using ``Firmware upgrade``
-- If configuration conversion fails keep the webpage open and perform ``Restore Configuration``
-
-You should now have a device with 32k more code memory to play with.
-
-### Informação de Verses
-
-- Sonoff-Tasmota provides all (Sonoff) modules in one file and starts with module Sonoff Basic.
-- Once uploaded select module using the configuration webpage or the commands ```Modules``` and ```Module```.
-- After reboot select config menu again or use commands ```GPIOs``` and ```GPIO``` to change GPIO with desired sensor.
+- Uma vez carregado o firmware a configuração de GPIO's pode ser feita usando a interface WEB ```Modules``` and ```Module```.
 
 <img src="http://www.bhonofre.pt/javax.faces.resource/images/onofre.png.xhtml?ln=apollo-layout" width="250" align="right" />
 
-See [Wiki](https://github.com/arendst/Sonoff-Tasmota/wiki) for more information.<br />
-See [Community](https://groups.google.com/d/forum/sonoffusers) for forum and more user experience.
+<img src="http://www.bhonofre.pt/javax.faces.resource/images/onofre/OnOfre_Rev3_pinout.png.xhtml?ln=apollo-layout"  align="center" />
+
+Consultar [Wiki](https://github.com/arendst/Sonoff-Tasmota/wiki) para mais informação.<br />
+Consultar [Community](https://groups.google.com/d/forum/sonoffusers).
 
 Os Seguintes dispositivos são Suportados:
-- [BH OnOfre](http://www.bhonofre.pt)
+- [BH OnOfre rev3](http://www.bhonofre.pt)
 - Para SonOff consultar o Git Original
 
 ### Licença
