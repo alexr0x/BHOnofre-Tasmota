@@ -42,7 +42,7 @@
 #define PROJECT                "bhonofre"          // PROJECT is used as the default topic delimiter and OTA file name
                                                  //   As an IDE restriction it needs to be the same as the main .ino file
 
-#define CFG_HOLDER             0x20162254        // [Reset 1] Change this value to load following default configuration parameters
+#define CFG_HOLDER             0x20262254        // [Reset 1] Change this value to load following default configuration parameters
 #define SAVE_DATA              1                 // [SaveData] Save changed parameters to Flash (0 = disable, 1 - 3600 seconds)
 #define SAVE_STATE             1                 // [SetOption0] Save changed power state to Flash (0 = disable, 1 = enable)
 
@@ -53,7 +53,7 @@
 #define WIFI_DNS               "192.168.187.254"    // [IpAddress4] If not using DHCP set DNS IP address (might be equal to WIFI_GATEWAY)
 
 #define STA_SSID1              "MAKER_IOT"      // [Ssid1] Wifi SSID
-#define STA_PASS1              "MAKERSPT"  // [Password1] Wifi password
+#define STA_PASS1              "MAKERSsPT"  // [Password1] Wifi password
 #define STA_SSID2              "indebuurt2"      // [Ssid2] Optional alternate AP Wifi SSID
 #define STA_PASS2              "VnsqrtnrsddbrN"  // [Password2] Optional alternate AP Wifi password
 #define WIFI_CONFIG_TOOL       WIFI_MANAGER    // [WifiConfig] Default tool if wifi fails to connect
