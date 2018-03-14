@@ -1,69 +1,31 @@
-## Sonoff-Tasmota
-Provide ESP8266 based Sonoff by [iTead Studio](https://www.itead.cc/) and ElectroDragon IoT Relay with Serial, Web and MQTT control allowing 'Over the Air' or OTA firmware updates using Arduino IDE.
+### BH OnOfre -Tasmota
 
-Current version is **5.12.0** - See [sonoff/_releasenotes.ino](https://github.com/arendst/Sonoff-Tasmota/blob/master/sonoff/_releasenotes.ino) for change information.
+Fornece ao BH OnOfre ou Sonoff baseados em ESP8266 um firmware com Interface Web, MQTT e OTA usando Arduino IDE ou PlatformIO
+<br>
+[YOUTUBE - O que é o OnOfre](https://youtu.be/OZenBfHWtak)
+### Atenção BH OnOfre
 
-### ATTENTION All versions
+Flashar com o Arduino IDE com as Seguintes opções:
+<br>
+<img src="https://lh3.googleusercontent.com/1D4MX6Chg6HYpotD4_P3lpTCpwNwIEr1wtMsXeFZC7-QQwHTO_8-kngoJAhQjW7amcUG9b91o3M3pWhHpFQoDIid5NMMuPQ5cXthHs5SGvrf553h8I27NSjw5anjMmWEkty7r9zEuko8rjJe8Cupzv1WZh9vbGTlJHlC0U3lpT72eBDFS3S85yVn7WYmL_tTz-PJCOJEyFP5KxnXuOvLKq_byC5dA_JwCsxkg7ytcHZ1VLgf7Z_ESC1ghGWYUEx3AS6AdQP5745ctidPmVPnbIzIUaFP2w2DGDCLXUlQ-7y8G1jotMThUSEDZXm6pPpaXIO2EvkLvLk2Fmf8X29Hm4DmstECL8MLAUNdfdP4HXCVLnY_RsRUk1kGQ1HuhIakj07KD-tySJZDthLg6_4YlLA3Ct-SNva8UM3O9Y42dXK6wBauqHsCld8j3RnPYcfNvj3zTj0PZcbo8xOnNchum2PnuVktSrTlkFGH2pXEp2X8v5gHXPuDQkdX4V6hvCdGz7hXO5Nf_5IDgZeaicNJyo6z0_FV32VPG076hyjQ4DS0yiYk3QmEs4q0wIKSQsQAxA9jVR4pubM7pkVs-FirDPagAEOger4PaFTtaQo=w666-h526-no" width="250" align="center" />
 
-Only Flash Mode DOUT is supported. Do not use Flash Mode DIO / QIO / QOUT as it might seem to brick your device.
 
-See [Wiki](https://github.com/arendst/Sonoff-Tasmota/wiki/Theo's-Tasmota-Tips) for background information.
 
-### ATTENTION Version 5 and up
+### Informação de Versões
 
-These versions use a new linker script to free flash memory for future code additions. It moves the settings from Spiffs to Eeprom. If you compile your own firmware download the new linker to your IDE or Platformio base folder. See [Wiki > Prerequisite](https://github.com/arendst/Sonoff-Tasmota/wiki/Prerequisite).
+- Uma vez carregado o firmware a configuração de GPIO's pode ser feita usando a interface WEB ```Modules``` and ```Module```.
 
-Best practice to implement is:
-- Open the webpage to your device
-- Perform option ``Backup Configuration``
-- Upgrade new firmware using ``Firmware upgrade``
-- If configuration conversion fails keep the webpage open and perform ``Restore Configuration``
+<img src="http://www.bhonofre.pt/javax.faces.resource/images/onofre.png.xhtml?ln=apollo-layout" width="250" align="right" />
 
-You should now have a device with 32k more code memory to play with.
+<img src="http://www.bhonofre.pt/javax.faces.resource/images/onofre/OnOfre_Rev3_pinout.png.xhtml?ln=apollo-layout"  align="center" />
 
-### Version Information
+Consultar [Wiki](https://github.com/arendst/Sonoff-Tasmota/wiki) para mais informação.<br />
+Consultar [Comunidade](https://groups.google.com/d/forum/sonoffusers).
 
-- Sonoff-Tasmota provides all (Sonoff) modules in one file and starts with module Sonoff Basic.
-- Once uploaded select module using the configuration webpage or the commands ```Modules``` and ```Module```.
-- After reboot select config menu again or use commands ```GPIOs``` and ```GPIO``` to change GPIO with desired sensor.
+Os Seguintes dispositivos são Suportados:
+- [BH OnOfre rev3](http://www.bhonofre.pt)
+- Para SonOff consultar o Git Original
 
-<img src="https://github.com/arendst/arendst.github.io/blob/master/media/sonoffbasic.jpg" width="250" align="right" />
+### Licença
 
-See [Wiki](https://github.com/arendst/Sonoff-Tasmota/wiki) for more information.<br />
-See [Community](https://groups.google.com/d/forum/sonoffusers) for forum and more user experience.
-
-The following devices are supported:
-- [iTead Sonoff Basic](https://www.itead.cc/smart-home/sonoff-wifi-wireless-switch-1.html)
-- [iTead Sonoff RF](https://www.itead.cc/smart-home/sonoff-rf.html)
-- [iTead Sonoff SV](https://www.itead.cc/smart-home/sonoff-sv.html)<img src="https://github.com/arendst/arendst.github.io/blob/master/media/sonoff_th.jpg" width="250" align="right" />
-- [iTead Sonoff TH10/TH16 with temperature sensor](https://www.itead.cc/smart-home/sonoff-th.html)
-- [iTead Sonoff Dual (R2)](https://www.itead.cc/smart-home/sonoff-dual.html)
-- [iTead Sonoff Pow](https://www.itead.cc/smart-home/sonoff-pow.html)
-- [iTead Sonoff 4CH](https://www.itead.cc/smart-home/sonoff-4ch.html)
-- [iTead Sonoff 4CH Pro](https://www.itead.cc/smart-home/sonoff-4ch-pro.html)
-- [iTead S20 Smart Socket](https://www.itead.cc/smart-socket.html)
-- [Sonoff S22 Smart Socket](https://github.com/arendst/Sonoff-Tasmota/issues/627)
-- [iTead Sonoff S31 Smart Socket with Energy Monitoring](https://www.itead.cc/sonoff-s31.html)
-- [iTead Slampher](https://www.itead.cc/slampher.html)
-- [iTead Sonoff Touch](https://www.itead.cc/sonoff-touch.html)
-- [iTead Sonoff T1](https://www.itead.cc/sonoff-t1.html)
-- [iTead Sonoff SC](https://www.itead.cc/sonoff-sc.html)
-- [iTead Sonoff Led](https://www.itead.cc/sonoff-led.html)<img src="https://github.com/arendst/arendst.github.io/blob/master/media/sonoff4ch.jpg" height="250" align="right" />
-- [iTead Sonoff BN-SZ01 Ceiling Led](https://www.itead.cc/bn-sz01.html)
-- [iTead Sonoff B1](https://www.itead.cc/sonoff-b1.html)
-- [iTead Sonoff RF Bridge 433](https://www.itead.cc/sonoff-rf-bridge-433.html)
-- [iTead Sonoff Dev](https://www.itead.cc/sonoff-dev.html)
-- [iTead 1 Channel Switch 5V / 12V](https://www.itead.cc/smart-home/inching-self-locking-wifi-wireless-switch.html)
-- [iTead Motor Clockwise/Anticlockwise](https://www.itead.cc/smart-home/motor-reversing-wifi-wireless-switch.html)
-- [Electrodragon IoT Relay Board](http://www.electrodragon.com/product/wifi-iot-relay-board-based-esp8266/)
-- AI Light or any my9291 compatible RGBW LED bulb
-- H801 PWM LED controller
-- [MagicHome PWM LED controller](https://github.com/arendst/Sonoff-Tasmota/wiki/MagicHome-LED-strip-controller)
-- AriLux AL-LC01, AL-LC06 and AL-LC11 PWM LED controller
-- [Supla device - Espablo-inCan mod. for electrical Installation box](https://forum.supla.org/viewtopic.php?f=33&t=2188)
-- [Luani HVIO board](https://luani.de/projekte/esp8266-hvio/)
-- Wemos D1 mini and NodeMcu
-
-### License
-
-This program is licensed under GPL-3.0
+Este programa está licenciado sob GPL-3.0

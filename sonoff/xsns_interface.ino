@@ -206,9 +206,13 @@ boolean XsnsCall(byte Function)
 
   for (byte x = 0; x < xsns_present; x++) {
     result = xsns_func_ptr[x](Function);
+<<<<<<< HEAD
     if (result) {
       break;
     }
+=======
+    if (result) break;
+>>>>>>> development
   }
 
   return result;

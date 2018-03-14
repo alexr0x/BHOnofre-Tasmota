@@ -88,6 +88,10 @@ enum UserSelectablePins {
   GPIO_SPI_DC,         // SPI Data Direction
   GPIO_BACKLIGHT,      // Display backlight control
   GPIO_PMS5003,        // Plantower PMS5003 Serial interface
+<<<<<<< HEAD
+=======
+  GPIO_SDS0X1,         // Nova Fitness SDS011 Serial interface
+>>>>>>> development
   GPIO_SENSOR_END };
 
 // Programmer selectable GPIO functionality offset by user selectable GPIOs
@@ -129,7 +133,11 @@ const char kSensorNames[] PROGMEM =
   D_SENSOR_PZEM_TX "|" D_SENSOR_PZEM_RX "|"
   D_SENSOR_SAIR_TX "|" D_SENSOR_SAIR_RX "|"
   D_SENSOR_SPI_CS "|" D_SENSOR_SPI_DC "|" D_SENSOR_BACKLIGHT "|"
+<<<<<<< HEAD
   D_SENSOR_PMS5003;
+=======
+  D_SENSOR_PMS5003 "|" D_SENSOR_SDS0X1;
+>>>>>>> development
 
 /********************************************************************************************/
 
@@ -176,7 +184,10 @@ enum SupportedModules {
   SONOFF_DUAL_R2,
   ARILUX_LC06,
   SONOFF_S31,
+<<<<<<< HEAD
   BHONOFRE_REV3,
+=======
+>>>>>>> development
   MAXMODULE };
 
 /********************************************************************************************/
@@ -235,8 +246,12 @@ const uint8_t kNiceList[MAXMODULE] PROGMEM = {
   KMC_70011,
   AILIGHT,
   WEMOS,
+<<<<<<< HEAD
   WITTY,
   BHONOFRE_REV3
+=======
+  WITTY
+>>>>>>> development
 };
 
 // Default module settings
@@ -681,9 +696,16 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      0, 0, 0, 0, 0
   },
   { "MagicHome",       // Magic Home (aka Flux-light) (ESP8266) - https://www.aliexpress.com/item/Magic-Home-Mini-RGB-RGBW-Wifi-Controller-For-Led-Strip-Panel-light-Timing-Function-16million-colors/32686853650.html
+<<<<<<< HEAD
      0, 0,
      GPIO_LED1_INV,    // GPIO02 Blue onboard LED
      0,
+=======
+     0,
+     GPIO_USER,        // GPIO01 Serial RXD and Optional sensor
+     GPIO_LED1_INV,    // GPIO02 Blue onboard LED
+     GPIO_USER,        // GPIO03 Serial TXD and Optional sensor
+>>>>>>> development
      GPIO_USER,        // GPIO04 IR receiver (optional)
      GPIO_PWM2,        // GPIO05 RGB LED Green
      0, 0, 0, 0, 0, 0, // Flash connection
@@ -721,9 +743,15 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
   { "Arilux LC01",     // Arilux AL-LC01 (ESP8285) - https://www.banggood.com/nl/ARILUX-AL-LC01-Super-Mini-LED-WIFI-Smart-RGB-Controller-For-RGB-LED-Strip-Light-DC-9-12V-p-1058603.html
                        //  (PwmFrequency 1111Hz)
      GPIO_KEY1,        // GPIO00 Optional Button
+<<<<<<< HEAD
      0,
      GPIO_LED2_INV,    // GPIO02 RF receiver control
      0,
+=======
+     GPIO_USER,        // GPIO01 Serial RXD and Optional sensor
+     GPIO_LED2_INV,    // GPIO02 RF receiver control
+     GPIO_USER,        // GPIO03 Serial TXD and Optional sensor
+>>>>>>> development
      GPIO_ARIRFRCV,    // GPIO04 IR or RF receiver (optional)
      GPIO_PWM1,        // GPIO05 RGB LED Red
      0, 0, 0, 0, 0, 0, // Flash connection
@@ -735,9 +763,15 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
   { "Arilux LC11",     // Arilux AL-LC11 (ESP8266) - https://www.banggood.com/nl/ARILUX-AL-LC11-Super-Mini-LED-WIFI-APP-Controller-RF-Remote-Control-For-RGBWW-LED-Strip-DC9-28V-p-1085112.html
                        //  (PwmFrequency 540Hz)
      GPIO_KEY1,        // GPIO00 Optional Button
+<<<<<<< HEAD
      0,
      GPIO_LED2_INV,    // GPIO02 RF receiver control
      0,
+=======
+     GPIO_USER,        // GPIO01 Serial RXD and Optional sensor
+     GPIO_LED2_INV,    // GPIO02 RF receiver control
+     GPIO_USER,        // GPIO03 Serial TXD and Optional sensor
+>>>>>>> development
      GPIO_PWM2,        // GPIO04 RGB LED Green
      GPIO_PWM1,        // GPIO05 RGB LED Red
      0, 0, 0, 0, 0, 0, // Flash connection
@@ -764,9 +798,15 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
   },
   { "Arilux LC06",     // Arilux AL-LC06 (ESP8285) - https://www.banggood.com/ARILUX-AL-LC06-LED-WIFI-Smartphone-Controller-Romote-5-Channels-DC12-24V-For-RGBWW-Strip-light-p-1061476.html
      GPIO_KEY1,        // GPIO00 Optional Button
+<<<<<<< HEAD
      0,
      GPIO_USER,        // GPIO02 Empty pad
      0,
+=======
+     GPIO_USER,        // GPIO01 Serial RXD and Optional sensor
+     GPIO_USER,        // GPIO02 Empty pad
+     GPIO_USER,        // GPIO03 Serial TXD and Optional sensor
+>>>>>>> development
      GPIO_USER,        // GPIO04 W2 - PWM5
      0,
      0, 0, 0, 0, 0, 0, // Flash connection
@@ -786,6 +826,7 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      GPIO_REL1,        // GPIO12 Red Led and Relay (0 = Off, 1 = On)
      GPIO_LED1_INV,    // GPIO13 Green Led (0 = On, 1 = Off)
      0, 0, 0, 0
+<<<<<<< HEAD
   },{ "BH OnOfre",         // BH OnOfre http://www.bhonofre.pt
      GPIO_USER,        // GPIO00 
      GPIO_TXD,        // GPIO01 
@@ -800,6 +841,8 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      GPIO_USER,        // GPIO15 
      GPIO_USER,        // GPIO16 
      GPIO_ADC0         // ADC0    
+=======
+>>>>>>> development
   }
 };
 
@@ -880,8 +923,31 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      0,
      GPIO_PWM4,        // GPIO15 RGBW LED White
      0, 0
+<<<<<<< HEAD
+=======
+  }
+
+  { "Ledunia",         // Ledunia (ESP8266) - http://ledunia.de/
+     GPIO_USER,        // GPIO00 (D0)
+     GPIO_USER,        // GPIO01 (D7) Serial RXD
+     GPIO_USER,        // GPIO02 (D2)
+     GPIO_USER,        // GPIO03 (D8) Serial TXD
+     GPIO_USER,        // GPIO04 (D4) 4 x WS2812 Leds, (DOUT) Extents WS2812 string
+     GPIO_USER,        // GPIO05 (D5) Blue Led
+     0, 0, 0, 0, 0, 0, // Flash connection
+     GPIO_USER,        // GPIO12 (D12)
+     GPIO_USER,        // GPIO13 (D13)
+     GPIO_USER,        // GPIO14 (D14)
+     GPIO_USER,        // GPIO15 (D15)
+     GPIO_USER,        // GPIO16 (D16)
+     0                 // ADC0 Analog input (A0)
+>>>>>>> development
   },
 
 */
 
+<<<<<<< HEAD
 #endif  // _SONOFF_TEMPLATE_H_
+=======
+#endif  // _SONOFF_TEMPLATE_H_
+>>>>>>> development

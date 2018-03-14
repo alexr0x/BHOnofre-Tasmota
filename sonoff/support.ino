@@ -17,8 +17,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+<<<<<<< HEAD
 IPAddress syslog_host_addr;  // Syslog host IP address
 unsigned long syslog_host_refresh = 0;
+=======
+IPAddress syslog_host_addr;      // Syslog host IP address
+uint32_t syslog_host_hash = 0;   // Syslog host name hash
+>>>>>>> development
 
 /*********************************************************************************************\
  * Watchdog extension (https://github.com/esp8266/Arduino/issues/1532)
@@ -314,6 +319,7 @@ char TempUnit()
 }
 
 double FastPrecisePow(double a, double b)
+<<<<<<< HEAD
 {
   // https://martin.ankerl.com/2012/01/25/optimized-approximative-pow-in-c-and-cpp/
   // calculate approximation with fraction of the exponent
@@ -412,6 +418,115 @@ void SetSerialBaudrate(int baudrate)
     delay(10);
     Serial.println();
   }
+=======
+{
+  // https://martin.ankerl.com/2012/01/25/optimized-approximative-pow-in-c-and-cpp/
+  // calculate approximation with fraction of the exponent
+  int e = (int)b;
+  union {
+    double d;
+    int x[2];
+  } u = { a };
+  u.x[1] = (int)((b - e) * (u.x[1] - 1072632447) + 1072632447);
+  u.x[0] = 0;
+  // exponentiation by squaring with the exponent's integer part
+  // double r = u.d makes everything much slower, not sure why
+  double r = 1.0;
+  while (e) {
+    if (e & 1) {
+      r *= a;
+    }
+    a *= a;
+    e >>= 1;
+  }
+  return r * u.d;
+}
+
+char* GetTextIndexed(char* destination, size_t destination_size, uint16_t index, const char* haystack)
+{
+  // Returns empty string if not found
+  // Returns text of found
+  char* write = destination;
+  const char* read = haystack;
+
+  index++;
+  while (index--) {
+    size_t size = destination_size -1;
+    write = destination;
+    char ch = '.';
+    while ((ch != '\0') && (ch != '|')) {
+      ch = pgm_read_byte(read++);
+      if (size && (ch != '|'))  {
+        *write++ = ch;
+        size--;
+      }
+    }
+    if (0 == ch) {
+      if (index) {
+        write = destination;
+      }
+      break;
+    }
+  }
+  *write = '\0';
+  return destination;
+}
+
+int GetCommandCode(char* destination, size_t destination_size, const char* needle, const char* haystack)
+{
+  // Returns -1 of not found
+  // Returns index and command if found
+  int result = -1;
+  const char* read = haystack;
+  char* write = destination;
+
+  while (true) {
+    result++;
+    size_t size = destination_size -1;
+    write = destination;
+    char ch = '.';
+    while ((ch != '\0') && (ch != '|')) {
+      ch = pgm_read_byte(read++);
+      if (size && (ch != '|'))  {
+        *write++ = ch;
+        size--;
+      }
+    }
+    *write = '\0';
+    if (!strcasecmp(needle, destination)) {
+      break;
+    }
+    if (0 == ch) {
+      result = -1;
+      break;
+    }
+  }
+  return result;
+}
+
+void SetSerialBaudrate(int baudrate)
+{
+  if (Serial.baudRate() != baudrate) {
+    if (seriallog_level) {
+      snprintf_P(log_data, sizeof(log_data), PSTR(D_LOG_APPLICATION D_SET_BAUDRATE_TO " %d"), baudrate);
+      AddLog(LOG_LEVEL_INFO);
+    }
+    delay(100);
+    Serial.flush();
+    Serial.begin(baudrate, serial_config);
+    delay(10);
+    Serial.println();
+  }
+}
+
+uint32_t GetHash(const char *buffer, size_t size)
+{
+  uint32_t hash = 0;
+  for (uint16_t i = 0; i <= size; i++) {
+    hash += (uint8_t)*buffer++ * (i +1);
+  }
+  return hash;
+>>>>>>> development
 }
 
 /*********************************************************************************************\
@@ -519,20 +634,34 @@ void WifiConfig(uint8_t type)
       restart_flag = 2;
     }
     else if (WIFI_SMARTCONFIG == wifi_config_type) {
+<<<<<<< HEAD
       AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_1_SMARTCONFIG D_ACTIVE_FOR_3_MINUTES));
+=======
+      AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_1_SMARTCONFIG " " D_ACTIVE_FOR_3_MINUTES));
+>>>>>>> development
       WiFi.beginSmartConfig();
     }
     else if (WIFI_WPSCONFIG == wifi_config_type) {
       if (WifiWpsConfigBegin()) {
+<<<<<<< HEAD
         AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_3_WPSCONFIG D_ACTIVE_FOR_3_MINUTES));
       } else {
         AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_3_WPSCONFIG D_FAILED_TO_START));
+=======
+        AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_3_WPSCONFIG " " D_ACTIVE_FOR_3_MINUTES));
+      } else {
+        AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_3_WPSCONFIG " " D_FAILED_TO_START));
+>>>>>>> development
         wifi_config_counter = 3;
       }
     }
 #ifdef USE_WEBSERVER
     else if (WIFI_MANAGER == wifi_config_type) {
+<<<<<<< HEAD
       AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_2_WIFIMANAGER D_ACTIVE_FOR_3_MINUTES));
+=======
+      AddLog_P(LOG_LEVEL_INFO, S_LOG_WIFI, PSTR(D_WCFG_2_WIFIMANAGER " " D_ACTIVE_FOR_3_MINUTES));
+>>>>>>> development
       WifiManagerBegin();
     }
 #endif  // USE_WEBSERVER
@@ -549,10 +678,18 @@ void WifiBegin(uint8_t flag)
 
 #ifdef ARDUINO_ESP8266_RELEASE_2_3_0  // (!strncmp_P(ESP.getSdkVersion(),PSTR("1.5.3"),5))
   AddLog_P(LOG_LEVEL_DEBUG, S_LOG_WIFI, PSTR(D_PATCH_ISSUE_2186));
+<<<<<<< HEAD
   WiFi.mode(WIFI_OFF);    // See https://github.com/esp8266/Arduino/issues/2186
 #endif
 
   WiFi.disconnect();
+=======
+  WiFi.mode(WIFI_OFF);      // See https://github.com/esp8266/Arduino/issues/2186
+#endif
+
+  WiFi.disconnect(true);    // Delete SDK wifi config
+  delay(200);
+>>>>>>> development
   WiFi.mode(WIFI_STA);      // Disable AP mode
   if (Settings.sleep) {
     WiFi.setSleepMode(WIFI_LIGHT_SLEEP);  // Allow light sleep during idle times
@@ -688,6 +825,10 @@ void WifiCheck(uint8_t param)
         if (WIFI_SMARTCONFIG == wifi_config_type) {
           WiFi.stopSmartConfig();
         }
+<<<<<<< HEAD
+=======
+        SettingsSdkErase();
+>>>>>>> development
         restart_flag = 2;
       }
     } else {
@@ -832,6 +973,7 @@ bool I2cValidRead16(uint16_t *data, uint8_t addr, uint8_t reg)
   bool status = I2cValidRead(addr, reg, 2);
   *data = (uint16_t)i2c_buffer;
   return status;
+<<<<<<< HEAD
 }
 
 bool I2cValidReadS16(int16_t *data, uint8_t addr, uint8_t reg)
@@ -866,6 +1008,42 @@ bool I2cValidRead24(int32_t *data, uint8_t addr, uint8_t reg)
 
 uint8_t I2cRead8(uint8_t addr, uint8_t reg)
 {
+=======
+}
+
+bool I2cValidReadS16(int16_t *data, uint8_t addr, uint8_t reg)
+{
+  bool status = I2cValidRead(addr, reg, 2);
+  *data = (int16_t)i2c_buffer;
+  return status;
+}
+
+bool I2cValidRead16LE(uint16_t *data, uint8_t addr, uint8_t reg)
+{
+  uint16_t ldata;
+  bool status = I2cValidRead16(&ldata, addr, reg);
+  *data = (ldata >> 8) | (ldata << 8);
+  return status;
+}
+
+bool I2cValidReadS16_LE(int16_t *data, uint8_t addr, uint8_t reg)
+{
+  uint16_t ldata;
+  bool status = I2cValidRead16LE(&ldata, addr, reg);
+  *data = (int16_t)ldata;
+  return status;
+}
+
+bool I2cValidRead24(int32_t *data, uint8_t addr, uint8_t reg)
+{
+  bool status = I2cValidRead(addr, reg, 3);
+  *data = i2c_buffer;
+  return status;
+}
+
+uint8_t I2cRead8(uint8_t addr, uint8_t reg)
+{
+>>>>>>> development
   I2cValidRead(addr, reg, 1);
   return (uint8_t)i2c_buffer;
 }
@@ -919,6 +1097,7 @@ bool I2cWrite(uint8_t addr, uint8_t reg, uint32_t val, uint8_t size)
 bool I2cWrite8(uint8_t addr, uint8_t reg, uint16_t val)
 {
    return I2cWrite(addr, reg, val, 1);
+<<<<<<< HEAD
 }
 
 bool I2cWrite16(uint8_t addr, uint8_t reg, uint16_t val)
@@ -926,6 +1105,15 @@ bool I2cWrite16(uint8_t addr, uint8_t reg, uint16_t val)
    return I2cWrite(addr, reg, val, 2);
 }
 
+=======
+}
+
+bool I2cWrite16(uint8_t addr, uint8_t reg, uint16_t val)
+{
+   return I2cWrite(addr, reg, val, 2);
+}
+
+>>>>>>> development
 void I2cScan(char *devs, unsigned int devs_len)
 {
   byte error;
@@ -950,7 +1138,21 @@ void I2cScan(char *devs, unsigned int devs_len)
     strncat(devs, "\"}", devs_len);
   } else {
     snprintf_P(devs, devs_len, PSTR("{\"" D_CMND_I2CSCAN "\":\"" D_JSON_I2CSCAN_NO_DEVICES_FOUND "\"}"));
+<<<<<<< HEAD
+=======
   }
+}
+
+boolean I2cDevice(byte addr)
+{
+  for (byte address = 1; address <= 127; address++) {
+    Wire.beginTransmission(address);
+    if (!Wire.endTransmission() && (address == addr)) {
+      return true;
+    }
+>>>>>>> development
+  }
+  return false;
 }
 
 boolean I2cDevice(byte addr)
@@ -992,6 +1194,10 @@ uint32_t daylight_saving_time = 0;
 uint32_t standard_time = 0;
 uint32_t ntp_time = 0;
 uint32_t midnight = 1451602800;
+<<<<<<< HEAD
+=======
+uint32_t restart_time = 0;
+>>>>>>> development
 uint8_t  midnight_now = 0;
 uint8_t  ntp_sync_minute = 0;
 
@@ -1024,21 +1230,65 @@ String GetBuildDateAndTime()
   return String(bdt);
 }
 
+<<<<<<< HEAD
 String GetDateAndTime()
+=======
+String GetDateAndTime(byte time_type)
+>>>>>>> development
 {
+  // enum GetDateAndTimeOptions { DT_LOCAL, DT_UTC, DT_RESTART, DT_UPTIME };
   // "2017-03-07T11:08:02" - ISO8601:2004
   char dt[21];
+  TIME_T tmpTime;
 
+<<<<<<< HEAD
   snprintf_P(dt, sizeof(dt), PSTR("%04d" D_YEAR_MONTH_SEPARATOR "%02d" D_MONTH_DAY_SEPARATOR "%02d" D_DATE_TIME_SEPARATOR "%02d" D_HOUR_MINUTE_SEPARATOR "%02d" D_MINUTE_SECOND_SEPARATOR "%02d"),
     RtcTime.year, RtcTime.month, RtcTime.day_of_month, RtcTime.hour, RtcTime.minute, RtcTime.second);
   return String(dt);
 }
 
 String GetUtcDateAndTime()
-{
-  // "2017-03-07T11:08:02" - ISO8601:2004
-  char dt[21];
+=======
+  if (DT_UPTIME == time_type) {
+    if (restart_time) {
+      BreakTime(utc_time - restart_time, tmpTime);
+    } else {
+      BreakTime(uptime, tmpTime);
+    }
+    // "P128DT14H35M44S" - ISO8601:2004 - https://en.wikipedia.org/wiki/ISO_8601 Durations
+    // snprintf_P(dt, sizeof(dt), PSTR("P%dDT%02dH%02dM%02dS"), ut.days, ut.hour, ut.minute, ut.second);
+    // "128 14:35:44" - OpenVMS
+    // "128T14:35:44" - Tasmota
+    snprintf_P(dt, sizeof(dt), PSTR("%dT%02d:%02d:%02d"),
+      tmpTime.days, tmpTime.hour, tmpTime.minute, tmpTime.second);
+  } else {
+    switch (time_type) {
+      case DT_UTC:
+        BreakTime(utc_time, tmpTime);
+        tmpTime.year += 1970;
+        break;
+      case DT_RESTART:
+        if (restart_time == 0) {
+          return "";
+        }
+        BreakTime(restart_time, tmpTime);
+        tmpTime.year += 1970;
+        break;
+      default:
+        tmpTime = RtcTime;
+    }
+    snprintf_P(dt, sizeof(dt), PSTR("%04d-%02d-%02dT%02d:%02d:%02d"),
+      tmpTime.year, tmpTime.month, tmpTime.day_of_month, tmpTime.hour, tmpTime.minute, tmpTime.second);
+  }
+  return String(dt);
+}
 
+String GetUptime()
+>>>>>>> development
+{
+  char dt[16];
+
+<<<<<<< HEAD
   TIME_T tmpTime;
   BreakTime(utc_time, tmpTime);
   tmpTime.year += 1970;
@@ -1066,6 +1316,28 @@ String GetUptime()
 
 void BreakTime(uint32_t time_input, TIME_T &tm)
 {
+=======
+  TIME_T ut;
+
+  if (restart_time) {
+    BreakTime(utc_time - restart_time, ut);
+  } else {
+    BreakTime(uptime, ut);
+  }
+
+  // "P128DT14H35M44S" - ISO8601:2004 - https://en.wikipedia.org/wiki/ISO_8601 Durations
+//  snprintf_P(dt, sizeof(dt), PSTR("P%dDT%02dH%02dM%02dS"), ut.days, ut.hour, ut.minute, ut.second);
+
+  // "128 14:35:44" - OpenVMS
+  // "128T14:35:44" - Tasmota
+  snprintf_P(dt, sizeof(dt), PSTR("%dT%02d:%02d:%02d"),
+    ut.days, ut.hour, ut.minute, ut.second);
+  return String(dt);
+}
+
+void BreakTime(uint32_t time_input, TIME_T &tm)
+{
+>>>>>>> development
 // break the given time_input into time components
 // this is a more compact version of the C library localtime function
 // note that year is offset from 1970 !!!
@@ -1221,13 +1493,23 @@ void RtcSecond()
   uint32_t dstoffset;
   TIME_T tmpTime;
 
+<<<<<<< HEAD
   if ((ntp_sync_minute > 59) && (3 == RtcTime.minute)) ntp_sync_minute = 1;                // If sync prepare for a new cycle
+=======
+  if ((ntp_sync_minute > 59) && (RtcTime.minute > 2)) ntp_sync_minute = 1;                 // If sync prepare for a new cycle
+>>>>>>> development
   uint8_t offset = (uptime < 30) ? RtcTime.second : (((ESP.getChipId() & 0xF) * 3) + 3) ;  // First try ASAP to sync. If fails try once every 60 seconds based on chip id
   if ((WL_CONNECTED == WiFi.status()) && (offset == RtcTime.second) && ((RtcTime.year < 2016) || (ntp_sync_minute == RtcTime.minute))) {
     ntp_time = sntp_get_current_timestamp();
     if (ntp_time) {
       utc_time = ntp_time;
       ntp_sync_minute = 60;  // Sync so block further requests
+<<<<<<< HEAD
+=======
+      if (restart_time == 0) {
+        restart_time = utc_time - uptime;  // save first ntp time as restart time
+      }
+>>>>>>> development
       BreakTime(utc_time, tmpTime);
       RtcTime.year = tmpTime.year + 1970;
       daylight_saving_time = RuleToTime(DaylightSavingTime, RtcTime.year);
@@ -1369,9 +1651,15 @@ void Syslog()
   // Destroys log_data
   char syslog_preamble[64];  // Hostname + Id
 
+<<<<<<< HEAD
   if ((static_cast<uint32_t>(syslog_host_addr) == 0) || ((millis() - syslog_host_refresh) > 60000)) {
     WiFi.hostByName(Settings.syslog_host, syslog_host_addr);
     syslog_host_refresh = millis();
+=======
+  if (syslog_host_hash != GetHash(Settings.syslog_host, strlen(Settings.syslog_host))) {
+    syslog_host_hash = GetHash(Settings.syslog_host, strlen(Settings.syslog_host));
+    WiFi.hostByName(Settings.syslog_host, syslog_host_addr);  // If sleep enabled this might result in exception so try to do it once using hash
+>>>>>>> development
   }
   if (PortUdp.beginPacket(syslog_host_addr, Settings.syslog_port)) {
     snprintf_P(syslog_preamble, sizeof(syslog_preamble), PSTR("%s ESP-"), my_hostname);
@@ -1424,6 +1712,17 @@ void AddLog_P(byte loglevel, const char *formatP)
 {
   snprintf_P(log_data, sizeof(log_data), formatP);
   AddLog(loglevel);
+<<<<<<< HEAD
+}
+
+void AddLog_P(byte loglevel, const char *formatP, const char *formatP2)
+{
+  char message[100];
+
+  snprintf_P(log_data, sizeof(log_data), formatP);
+  snprintf_P(message, sizeof(message), formatP2);
+  strncat(log_data, message, sizeof(log_data));
+=======
 }
 
 void AddLog_P(byte loglevel, const char *formatP, const char *formatP2)
@@ -1436,13 +1735,27 @@ void AddLog_P(byte loglevel, const char *formatP, const char *formatP2)
   AddLog(loglevel);
 }
 
+void AddLogSerial(byte loglevel, uint8_t *buffer, byte count)
+{
+  snprintf_P(log_data, sizeof(log_data), PSTR(D_LOG_SERIAL D_RECEIVED));
+  for (byte i = 0; i < count; i++) {
+    snprintf_P(log_data, sizeof(log_data), PSTR("%s %02X"), log_data, *(buffer++));
+  }
+>>>>>>> development
+  AddLog(loglevel);
+}
+
 void AddLogSerial(byte loglevel)
 {
+<<<<<<< HEAD
   snprintf_P(log_data, sizeof(log_data), PSTR(D_LOG_SERIAL D_RECEIVED));
   for (byte i = 0; i < serial_in_byte_counter; i++) {
     snprintf_P(log_data, sizeof(log_data), PSTR("%s %02X"), log_data, serial_in_buffer[i]);
   }
   AddLog(loglevel);
+=======
+  AddLogSerial(loglevel, (uint8_t*)serial_in_buffer, serial_in_byte_counter);
+>>>>>>> development
 }
 
 /*********************************************************************************************\

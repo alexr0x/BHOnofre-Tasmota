@@ -1,7 +1,13 @@
 /*
+<<<<<<< HEAD
   pl-PL.h - localization for Polish without fonetick - Poland for Sonoff-Tasmota
 
   Copyright (C) 2018  Theo Arends (translated by roblad - Robert L.)
+=======
+  pl-PL-d.h - localization for Polish with diacritics - Poland for Sonoff-Tasmota
+
+  Copyright (C) 2018  Theo Arends (translated by roblad - Robert L., upgraded by R. Turala)
+>>>>>>> development
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -17,8 +23,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+<<<<<<< HEAD
 #ifndef _LANGUAGE_PL_PL_H_
 #define _LANGUAGE_PL_PL_H_
+=======
+#ifndef _LANGUAGE_PL_PL_D_H_
+#define _LANGUAGE_PL_PL_D_H_
+>>>>>>> development
 
 /*************************** ATTENTION *******************************\
  *
@@ -39,20 +50,33 @@
 #define D_HOUR_MINUTE_SEPARATOR ":"
 #define D_MINUTE_SECOND_SEPARATOR ":"
 
+<<<<<<< HEAD
 #define D_DAY3LIST "PonWtoSroCzwPiaSobNie"
 #define D_MONTH3LIST "StyLutMarKwiMajCzeLipSieWrzPazLisGru"
+=======
+#define D_DAY3LIST "PonWtoŚroCzwPiąSobNie"
+#define D_MONTH3LIST "StyLutMarKwiMajCzeLipSieWrzPaźLisGru"
+>>>>>>> development
 
 // Non JSON decimal separator
 #define D_DECIMAL_SEPARATOR ","
 
 // Common
 #define D_ADMIN "Admin"
+<<<<<<< HEAD
 #define D_AIR_QUALITY "Jakosc powietrza"
+=======
+#define D_AIR_QUALITY "Jakość powietrza"
+>>>>>>> development
 #define D_AP "AP"                    // Access Point
 #define D_AS "jak"
 #define D_AUTO "AUTO"
 #define D_BLINK "Miganie"
+<<<<<<< HEAD
 #define D_BLINKOFF "MiganieWyl"
+=======
+#define D_BLINKOFF "MiganieWył"
+>>>>>>> development
 #define D_BOOT_COUNT "Licznik uruchomienia"
 #define D_BRIGHTLIGHT "Jasny"
 #define D_BUTTON "Przycisk"
@@ -63,10 +87,17 @@
 #define D_CODE "kod"                 // Button code
 #define D_COLDLIGHT "Zimny"
 #define D_COMMAND "Komenda"
+<<<<<<< HEAD
 #define D_CONNECTED "Polaczony"
 #define D_COUNT "Licz"
 #define D_COUNTER "Licznik"
 #define D_CURRENT "Biezacy"          // As in Voltage and Current
+=======
+#define D_CONNECTED "Połączony"
+#define D_COUNT "Licz"
+#define D_COUNTER "Licznik"
+#define D_CURRENT "Bieżący"          // As in Voltage and Current
+>>>>>>> development
 #define D_DATA "Data"
 #define D_DARKLIGHT "Ciemny"
 #define D_DEBUG "Debug"
@@ -77,6 +108,7 @@
 #define D_EMULATION "Emulacja"
 #define D_ENABLED "Otwarty"
 #define D_ERASE "Nadpisz"
+<<<<<<< HEAD
 #define D_ERROR "Blad"
 #define D_FAHRENHEIT "Fahrenheita"
 #define D_FAILED "Bledny"
@@ -85,18 +117,34 @@
 #define D_FALSE "Falsz"
 #define D_FILE "Plik"
 #define D_FREE_MEMORY "Wolna pamiec"
+=======
+#define D_ERROR "Błąd"
+#define D_FAHRENHEIT "Fahrenheita"
+#define D_FAILED "Błędny"
+#define D_FALLBACK "Awaryjny"
+#define D_FALLBACK_TOPIC "Zastępczy temat"
+#define D_FALSE "Fałsz"
+#define D_FILE "Plik"
+#define D_FREE_MEMORY "Wolna pamięć"
+>>>>>>> development
 #define D_GAS "Gas"
 #define D_GATEWAY "Brama"
 #define D_GROUP "Grupa"
 #define D_HOST "Serwer"
 #define D_HOSTNAME "Nazwa serwera"
+<<<<<<< HEAD
 #define D_HUMIDITY "Wilgotnosc"
 #define D_ILLUMINANCE "Oswietlenie"
+=======
+#define D_HUMIDITY "Wilgotność"
+#define D_ILLUMINANCE "Oświetlenie"
+>>>>>>> development
 #define D_IMMEDIATE "Natychmiastowe"      // Button immediate
 #define D_INDEX "Indeks"
 #define D_INFO "Informacja"
 #define D_INITIALIZED "Zainicjowany"
 #define D_IP_ADDRESS "Adres IP"
+<<<<<<< HEAD
 #define D_LIGHT "Swiatlo"
 #define D_LWT "LWT"
 #define D_MODULE "Modul"
@@ -117,6 +165,28 @@
 #define D_PRESSUREATSEALEVEL "Cisnienie na poziomie morza"
 #define D_PROGRAM_FLASH_SIZE "Wielkosc programu flash"
 #define D_PROGRAM_SIZE "Wielkosc programu"
+=======
+#define D_LIGHT "Światło"
+#define D_LWT "LWT"
+#define D_MODULE "Moduł"
+#define D_MQTT "MQTT"
+#define D_MULTI_PRESS "wielokrotne-naciśnięcie"
+#define D_NOISE "Hałas"
+#define D_NONE "Brak"
+#define D_OFF "Wyłączony"
+#define D_OFFLINE "Nieaktywny"
+#define D_OK "Ok"
+#define D_ON "Włączony"
+#define D_ONLINE "Aktywny"
+#define D_PASSWORD "Hasło"
+#define D_PORT "Port"
+#define D_POWER_FACTOR "Współczynik mocy"
+#define D_POWERUSAGE "Moc"
+#define D_PRESSURE "Ciśnienie"
+#define D_PRESSUREATSEALEVEL "Ciśnienie na poziomie morza"
+#define D_PROGRAM_FLASH_SIZE "Wielkość programu flash"
+#define D_PROGRAM_SIZE "Wielkość programu"
+>>>>>>> development
 #define D_PROJECT "Projekt"
 #define D_RECEIVED "Otrzymany"
 #define D_RESTART "Restart"
@@ -135,18 +205,32 @@
 #define D_SUCCESSFUL "Powodzenie"
 #define D_TEMPERATURE "Temperatura"
 #define D_TO "do"
+<<<<<<< HEAD
 #define D_TOGGLE "Przelacz"
 #define D_TOPIC "Temat"
 #define D_TRANSMIT "Wyslij"
+=======
+#define D_TOGGLE "Przełącz"
+#define D_TOPIC "Temat"
+#define D_TRANSMIT "Wyślij"
+>>>>>>> development
 #define D_TRUE "Prawda"
 #define D_UPGRADE "aktualizacji"
 #define D_UPLOAD "Wgraj"
 #define D_UPTIME "Uptime"
+<<<<<<< HEAD
 #define D_USER "Uzytkownik"
 #define D_UTC_TIME "UTC"
 #define D_UV_LEVEL "Poziom UV"
 #define D_VERSION "Wersja"
 #define D_VOLTAGE "Napiecie"
+=======
+#define D_USER "Użytkownik"
+#define D_UTC_TIME "UTC"
+#define D_UV_LEVEL "Poziom UV"
+#define D_VERSION "Wersja"
+#define D_VOLTAGE "Napięcie"
+>>>>>>> development
 #define D_WARMLIGHT "Nagrzanie"
 #define D_WEB_SERVER "Web Server"
 
@@ -154,6 +238,7 @@
 #define D_WARNING_MINIMAL_VERSION "WARNING This version does not support persistent settings"
 #define D_LEVEL_10 "poziom 1-0"
 #define D_LEVEL_01 "poziom 0-1"
+<<<<<<< HEAD
 #define D_SERIAL_LOGGING_DISABLED "Wylaczony dziennik na porcie szeregowym"
 #define D_SYSLOG_LOGGING_REENABLED "Wznowiono zapis do Syslog"
 
@@ -186,10 +271,45 @@
 #define D_CHECKING_CONNECTION "Sprawdzanie polaczenia..."
 #define D_QUERY_DONE "Wykonano zapytanie. Znaleziono uslugi MQTT"
 #define D_MQTT_SERVICE_FOUND "Usluga MQTT została znaleziona"
+=======
+#define D_SERIAL_LOGGING_DISABLED "Wyłączony dziennik na porcie szeregowym"
+#define D_SYSLOG_LOGGING_REENABLED "Wznowiono zapis do Syslog"
+
+#define D_SET_BAUDRATE_TO "Ustaw szybkość transmisji na"
+#define D_RECEIVED_TOPIC "Otrzymany temat"
+#define D_DATA_SIZE "Wielkość danych"
+#define D_ANALOG_INPUT "Wej_analogowe"
+
+#define D_FINGERPRINT "Weryfikuj odcisk TLS..."
+#define D_TLS_CONNECT_FAILED_TO "Nieudane połączenie TLS do"
+#define D_RETRY_IN "Spróbuj ponownie"
+#define D_VERIFIED "Zweryfikowano"
+#define D_INSECURE "Nieprawidłowe połączenie z powodu błędnego odcisku TLS"
+#define D_CONNECT_FAILED_TO "Nie udało się nawiązać połączenia"
+
+// support.ino
+#define D_OSWATCH "osWatch"
+#define D_BLOCKED_LOOP "Pętla zablokowana"
+#define D_WPS_FAILED_WITH_STATUS "Błąd WPSconfig ze statusem"
+#define D_ACTIVE_FOR_3_MINUTES "aktywny 3 minuty"
+#define D_FAILED_TO_START "nie udało się uruchomić"
+#define D_PATCH_ISSUE_2186 "Błąd łatki 2186"
+#define D_CONNECTING_TO_AP "Łączenie z AP"
+#define D_IN_MODE "w trybie"
+#define D_CONNECT_FAILED_NO_IP_ADDRESS "Połączenie nie powiodło sie, ponieważ nie otrzymano adresu IP"
+#define D_CONNECT_FAILED_AP_NOT_REACHED "Połączenie nie powiodło sie jako AP nie można osiągnać"
+#define D_CONNECT_FAILED_WRONG_PASSWORD "Połączenie nie powiodło sie z nieprawidlowym hasłem dostepu AP"
+#define D_CONNECT_FAILED_AP_TIMEOUT "Nie udało się nawiązac połączenia, limit czasu AP przekroczony"
+#define D_ATTEMPTING_CONNECTION "Próba połączenia..."
+#define D_CHECKING_CONNECTION "Sprawdzanie połączenia..."
+#define D_QUERY_DONE "Wykonano zapytanie. Znaleziono uslugi MQTT"
+#define D_MQTT_SERVICE_FOUND "Usługa MQTT została znaleziona"
+>>>>>>> development
 #define D_FOUND_AT "znalezione w"
 #define D_SYSLOG_HOST_NOT_FOUND "Syslog Host nie znaleziony"
 
 // settings.ino
+<<<<<<< HEAD
 #define D_SAVED_TO_FLASH_AT "Zapisane do pamieci flash w"
 #define D_LOADED_FROM_FLASH_AT "Wczytane z pamieci flash z"
 #define D_USE_DEFAULTS "Uzyj domyslnych"
@@ -197,10 +317,20 @@
 
 // webserver.ino
 #define D_MINIMAL_FIRMWARE_PLEASE_UPGRADE "Oprogramowanie MINIMAL - prosze uaktualnic"
+=======
+#define D_SAVED_TO_FLASH_AT "Zapisane do pamięci flash w"
+#define D_LOADED_FROM_FLASH_AT "Wczytane z pamięci flash z"
+#define D_USE_DEFAULTS "Użyj domyślnych"
+#define D_ERASED_SECTOR "Wymazany sektor"
+
+// webserver.ino
+#define D_MINIMAL_FIRMWARE_PLEASE_UPGRADE "Oprogramowanie MINIMAL - proszę uaktualnić"
+>>>>>>> development
 #define D_WEBSERVER_ACTIVE_ON "Aktywny serwer Web"
 #define D_WITH_IP_ADDRESS "z adresem IP"
 #define D_WEBSERVER_STOPPED "Serwer Web zatrzymany"
 #define D_FILE_NOT_FOUND "Plik nie odnaleziony"
+<<<<<<< HEAD
 #define D_REDIRECTED "Przekierowano do wlasnego portalu"
 #define D_WIFIMANAGER_SET_ACCESSPOINT_AND_STATION "Menedzer Wifi ustawia punkt dostepowy i zachowuje stacje"
 #define D_WIFIMANAGER_SET_ACCESSPOINT "Menedzer sieci Wi-Fi Access Point"
@@ -210,18 +340,36 @@
 #define D_SECONDS "sekund"
 #define D_DEVICE_WILL_RESTART "Urzadzenie zrestartuje sie za kilka sekund"
 #define D_BUTTON_TOGGLE "Przelacznik"
+=======
+#define D_REDIRECTED "Przekierowano do własnego portalu"
+#define D_WIFIMANAGER_SET_ACCESSPOINT_AND_STATION "Menedżer Wifi ustawia punkt dostępowy i zachowuje stacje"
+#define D_WIFIMANAGER_SET_ACCESSPOINT "Menedżer sieci Wi-Fi Access Point"
+#define D_TRYING_TO_CONNECT "Próbuję połączyć urzadzenie z siecią"
+
+#define D_RESTART_IN "Zrestartuj"
+#define D_SECONDS "sekund"
+#define D_DEVICE_WILL_RESTART "Urządzenie zrestartuje sie za kilka sekund"
+#define D_BUTTON_TOGGLE "Przełącznik"
+>>>>>>> development
 #define D_CONFIGURATION "Konfiguracja"
 #define D_INFORMATION "Informacje"
 #define D_FIRMWARE_UPGRADE "Uaktualnienie oprogramowania"
 #define D_CONSOLE "Konsola"
+<<<<<<< HEAD
 #define D_CONFIRM_RESTART "Potwierdz restart"
 
 #define D_CONFIGURE_MODULE "Konfiguruj modul"
+=======
+#define D_CONFIRM_RESTART "Potwierdź restart"
+
+#define D_CONFIGURE_MODULE "Konfiguruj moduł"
+>>>>>>> development
 #define D_CONFIGURE_WIFI "Konfiguruj WiFi"
 #define D_CONFIGURE_MQTT "Konfiguruj MQTT"
 #define D_CONFIGURE_DOMOTICZ "Konfiguruj Domoticz"
 #define D_CONFIGURE_LOGGING "Konfiguruj zapis dziennika"
 #define D_CONFIGURE_OTHER "Konfiguruj inne"
+<<<<<<< HEAD
 #define D_CONFIRM_RESET_CONFIGURATION "Potwierdz reset ustawien"
 #define D_RESET_CONFIGURATION "Reset ustawien"
 #define D_BACKUP_CONFIGURATION "Kopia ustawien"
@@ -230,6 +378,16 @@
 
 #define D_MODULE_PARAMETERS "Parametery modulu"
 #define D_MODULE_TYPE "Typ modulu"
+=======
+#define D_CONFIRM_RESET_CONFIGURATION "Potwierdź reset ustawień"
+#define D_RESET_CONFIGURATION "Reset ustawień"
+#define D_BACKUP_CONFIGURATION "Kopia ustawień"
+#define D_RESTORE_CONFIGURATION "Przywrócenie ustawień"
+#define D_MAIN_MENU "Menu główne"
+
+#define D_MODULE_PARAMETERS "Parametery modułu"
+#define D_MODULE_TYPE "Typ modułu"
+>>>>>>> development
 #define D_GPIO "GPIO"
 #define D_SERIAL_IN "Serial In"
 #define D_SERIAL_OUT "Serial Out"
@@ -238,14 +396,21 @@
 #define D_SCAN_FOR_WIFI_NETWORKS "Skanuj sieci WiFi"
 #define D_SCAN_DONE "Skan wykonany"
 #define D_NO_NETWORKS_FOUND "Nie znaleziono sieci"
+<<<<<<< HEAD
 #define D_REFRESH_TO_SCAN_AGAIN "Odswiez aby ponownie zeskanowac"
 #define D_DUPLICATE_ACCESSPOINT "Kopiuj AP"
 #define D_SKIPPING_LOW_QUALITY "Pominieto z powodu niskiej jakości sygnalu"
+=======
+#define D_REFRESH_TO_SCAN_AGAIN "Odswież aby ponownie zeskanowac"
+#define D_DUPLICATE_ACCESSPOINT "Kopiuj AP"
+#define D_SKIPPING_LOW_QUALITY "Pominięto z powodu niskiej jakości sygnału"
+>>>>>>> development
 #define D_RSSI "RSSI"
 #define D_WEP "WEP"
 #define D_WPA_PSK "WPA PSK"
 #define D_WPA2_PSK "WPA2 PSK"
 #define D_AP1_SSID "AP1 SSID"
+<<<<<<< HEAD
 #define D_AP1_PASSWORD "Haslo AP1"
 #define D_AP2_SSID "AP2 SSID"
 #define D_AP2_PASSWORD "Haslo AP2"
@@ -253,18 +418,35 @@
 #define D_MQTT_PARAMETERS "Parametery MQTT"
 #define D_CLIENT "Klient"
 #define D_FULL_TOPIC "Pelen temat"
+=======
+#define D_AP1_PASSWORD "Hasło AP1"
+#define D_AP2_SSID "AP2 SSID"
+#define D_AP2_PASSWORD "Hasło AP2"
+
+#define D_MQTT_PARAMETERS "Parametery MQTT"
+#define D_CLIENT "Klient"
+#define D_FULL_TOPIC "Pełen temat"
+>>>>>>> development
 
 #define D_LOGGING_PARAMETERS "Opcje dziennika"
 #define D_SERIAL_LOG_LEVEL "Serial poziom dziennika"
 #define D_WEB_LOG_LEVEL "Web poziom dziennika"
 #define D_SYS_LOG_LEVEL "System poziom dziennika"
+<<<<<<< HEAD
 #define D_MORE_DEBUG "Wiecej informacji debugujacych"
+=======
+#define D_MORE_DEBUG "Więcej informacji debugujacych"
+>>>>>>> development
 #define D_SYSLOG_HOST "Syslog host"
 #define D_SYSLOG_PORT "Syslog port"
 #define D_TELEMETRY_PERIOD "Okres telemetrii"
 
 #define D_OTHER_PARAMETERS "Inne parametery"
+<<<<<<< HEAD
 #define D_WEB_ADMIN_PASSWORD "Haslo administratora Web"
+=======
+#define D_WEB_ADMIN_PASSWORD "Hasło administratora Web"
+>>>>>>> development
 #define D_MQTT_ENABLE "MQTT aktywne"
 #define D_FRIENDLY_NAME "Przyjazna nazwa"
 #define D_BELKIN_WEMO "Belkin WeMo"
@@ -277,9 +459,15 @@
 #define D_CONFIGURATION_RESET "Ustawienia zresetowane"
 
 #define D_PROGRAM_VERSION "Wersja programu"
+<<<<<<< HEAD
 #define D_BUILD_DATE_AND_TIME "Dzien i godzina kompilacji"
 #define D_CORE_AND_SDK_VERSION "Wersja Core/SDK"
 #define D_FLASH_WRITE_COUNT "Liczba zapisow do pamieci"
+=======
+#define D_BUILD_DATE_AND_TIME "Dzień i godzina kompilacji"
+#define D_CORE_AND_SDK_VERSION "Wersja Core/SDK"
+#define D_FLASH_WRITE_COUNT "Liczba zapisów do pamięci"
+>>>>>>> development
 #define D_MAC_ADDRESS "Adres Mac"
 #define D_MQTT_HOST "Host MQTT"
 #define D_MQTT_PORT "Port MQTT"
@@ -287,11 +475,19 @@
 #define D_MQTT_USER "Uzytkownik MQTT"
 #define D_MQTT_TOPIC "Temat MQTT"
 #define D_MQTT_GROUP_TOPIC "Temat grupy MQTT"
+<<<<<<< HEAD
 #define D_MQTT_FULL_TOPIC "Pelen temat MQTT"
 #define D_MDNS_DISCOVERY "Wykrywanie mDNS"
 #define D_MDNS_ADVERTISE "Rozglaszanie mDNS"
 #define D_ESP_CHIP_ID "ID ukladu ESP"
 #define D_FLASH_CHIP_ID "ID ukladu pamieci flash"
+=======
+#define D_MQTT_FULL_TOPIC "Pełen temat MQTT"
+#define D_MDNS_DISCOVERY "Wykrywanie mDNS"
+#define D_MDNS_ADVERTISE "Rozgłaszanie mDNS"
+#define D_ESP_CHIP_ID "ID ukladu ESP"
+#define D_FLASH_CHIP_ID "ID układu pamięci flash"
+>>>>>>> development
 #define D_FLASH_CHIP_SIZE "Rozmiar flash"
 #define D_FREE_PROGRAM_SPACE "Wolne miejsce programu"
 
@@ -299,6 +495,7 @@
 #define D_OTA_URL "URL OTA"
 #define D_START_UPGRADE "Start aktualizacji"
 #define D_UPGRADE_BY_FILE_UPLOAD "Aktualizacja poprzez wgranie pliku"
+<<<<<<< HEAD
 #define D_UPLOAD_STARTED "Wgrywanie rozpoczete"
 #define D_UPGRADE_STARTED "Aktualizacja rozpoczeta"
 #define D_UPLOAD_DONE "Wgrywanie zakonczone"
@@ -322,35 +519,79 @@
 #define D_MULTICAST_REJOINED "Multicast (re)dolaczony"
 #define D_MULTICAST_JOIN_FAILED "Multicast nie powiodlo sie"
 #define D_FAILED_TO_SEND_RESPONSE "Nie udalo sie wyslac odpowiedzi"
+=======
+#define D_UPLOAD_STARTED "Wgrywanie rozpoczęte"
+#define D_UPGRADE_STARTED "Aktualizacja rozpoczęta"
+#define D_UPLOAD_DONE "Wgrywanie zakończone"
+#define D_UPLOAD_ERR_1 "Nie wybrano pliku"
+#define D_UPLOAD_ERR_2 "Niewystarczająca ilość miejsca"
+#define D_UPLOAD_ERR_3 "Magiczny bajt jest inny niz 0xE9"
+#define D_UPLOAD_ERR_4 "Rozmiar programu jest większy niż rzeczywisty rozmiar pamieci flash"
+#define D_UPLOAD_ERR_5 "Wgrywanie, bufor niezgodnosci stanu porównywanych bitow"
+#define D_UPLOAD_ERR_6 "Błąd wgrywania. Uruchomiono zapis do dziennika na poziomie 3"
+#define D_UPLOAD_ERR_7 "Wgrywanie przerwane"
+#define D_UPLOAD_ERR_8 "Błędny plik"
+#define D_UPLOAD_ERR_9 "Plik jest za duży"
+#define D_UPLOAD_ERROR_CODE "Błąd wgrywania"
+
+#define D_ENTER_COMMAND "Wprowadź polecenie"
+#define D_ENABLE_WEBLOG_FOR_RESPONSE "Włącz poziom 2 zapisu Weblog, jeśli oczekiwana jest odpowiedź"
+#define D_NEED_USER_AND_PASSWORD "Wymagany użytkownik=<username>&hasło=<password>"
+
+// xdrv_wemohue.ino
+#define D_MULTICAST_DISABLED "Multicast jest wyłączony"
+#define D_MULTICAST_REJOINED "Multicast (re)dołączony"
+#define D_MULTICAST_JOIN_FAILED "Multicast nie powiodło się"
+#define D_FAILED_TO_SEND_RESPONSE "Nie udało się wysłać odpowiedzi"
+>>>>>>> development
 
 #define D_WEMO "WeMo"
 #define D_WEMO_BASIC_EVENT "WeMo podstawowe zdarzenie"
 #define D_WEMO_EVENT_SERVICE "WeMo zdarzenie service"
 #define D_WEMO_META_SERVICE "WeMo meta service"
 #define D_WEMO_SETUP "WeMo setup"
+<<<<<<< HEAD
 #define D_RESPONSE_SENT "Odpowiedz wyslana"
+=======
+#define D_RESPONSE_SENT "Odpowiedź wysłana"
+>>>>>>> development
 
 #define D_HUE "Hue"
 #define D_HUE_BRIDGE_SETUP "Hue setup"
 #define D_HUE_API_NOT_IMPLEMENTED "Hue API nie zaimplementowane"
 #define D_HUE_API "Hue API"
 #define D_HUE_POST_ARGS "Hue POST args"
+<<<<<<< HEAD
 #define D_3_RESPONSE_PACKETS_SENT "3 pakiety odpowiedzi wysylane"
+=======
+#define D_3_RESPONSE_PACKETS_SENT "3 pakiety odpowiedzi wysyłane"
+>>>>>>> development
 
 // xdrv_05_domoticz.ino
 #define D_DOMOTICZ_PARAMETERS "Parametry Domoticz"
 #define D_DOMOTICZ_IDX "Idx"
 #define D_DOMOTICZ_KEY_IDX "Key idx"
+<<<<<<< HEAD
 #define D_DOMOTICZ_SWITCH_IDX "Przelacznik idx"
+=======
+#define D_DOMOTICZ_SWITCH_IDX "Przełącznik idx"
+>>>>>>> development
 #define D_DOMOTICZ_SENSOR_IDX "Sensor idx"
   #define D_DOMOTICZ_TEMP "Temp"
   #define D_DOMOTICZ_TEMP_HUM "Temp,Wilg"
   #define D_DOMOTICZ_TEMP_HUM_BARO "Temp,Wilg,Cis"
   #define D_DOMOTICZ_POWER_ENERGY "Moc,Energia"
+<<<<<<< HEAD
   #define D_DOMOTICZ_ILLUMINANCE "Oswietl."
   #define D_DOMOTICZ_COUNT "Licznik"
   #define D_DOMOTICZ_VOLTAGE "Napiecie"
   #define D_DOMOTICZ_CURRENT "Prad"
+=======
+  #define D_DOMOTICZ_ILLUMINANCE "Oświetl."
+  #define D_DOMOTICZ_COUNT "Licznik"
+  #define D_DOMOTICZ_VOLTAGE "Napięcie"
+  #define D_DOMOTICZ_CURRENT "Prąd"
+>>>>>>> development
   #define D_DOMOTICZ_AIRQUALITY "AirQuality"
 #define D_DOMOTICZ_UPDATE_TIMER "Zaktualizuj czasomierz"
 
@@ -360,8 +601,13 @@
 #define D_ENERGY_TOTAL "Energia suma"
 
 // xsns_05_ds18b20.ino
+<<<<<<< HEAD
 #define D_SENSOR_BUSY "Czujnik DS18x20 zajety"
 #define D_SENSOR_CRC_ERROR "Czujnik DS18x20 blad CRC"
+=======
+#define D_SENSOR_BUSY "Czujnik DS18x20 zajęty"
+#define D_SENSOR_CRC_ERROR "Czujnik DS18x20 błąd CRC"
+>>>>>>> development
 #define D_SENSORS_FOUND "Znaleziono Czujnik DS18x20"
 
 // xsns_06_dht.ino
@@ -369,10 +615,17 @@
 #define D_START_SIGNAL_LOW "sygnał startowy niski"
 #define D_START_SIGNAL_HIGH "sygnał startowy wysoki"
 #define D_PULSE "pulse"
+<<<<<<< HEAD
 #define D_CHECKSUM_FAILURE "Bledna suma kontrolmna"
 
 // xsns_07_sht1x.ino
 #define D_SENSOR_DID_NOT_ACK_COMMAND "Czujnik nie otrzymal komendy ACK"
+=======
+#define D_CHECKSUM_FAILURE "Błędna suma kontrolna"
+
+// xsns_07_sht1x.ino
+#define D_SENSOR_DID_NOT_ACK_COMMAND "Czujnik nie otrzymał komendy ACK"
+>>>>>>> development
 #define D_SHT1X_FOUND "SHT1X znaleziony"
 
 // xsns_18_pms5003.ino
@@ -407,6 +660,10 @@
 #define D_SENSOR_SPI_DC   "SPI DC"
 #define D_SENSOR_BACKLIGHT "BkLight"
 #define D_SENSOR_PMS5003  "PMS5003"
+<<<<<<< HEAD
+=======
+#define D_SENSOR_SDS0X1   "SDS0X1"
+>>>>>>> development
 
 // Units
 #define D_UNIT_AMPERE "A"
@@ -454,4 +711,8 @@
 #define D_LOG_UPNP "UPP: "         // UPnP
 #define D_LOG_WIFI "WIF: "         // Wifi
 
+<<<<<<< HEAD
 #endif  // _LANGUAGE_PL_PL_H_
+=======
+#endif  // _LANGUAGE_PL_PL_D_H_
+>>>>>>> development

@@ -1,7 +1,11 @@
 /*
   xsns_16_tsl2561.ino - TSL2561 light sensor support for Sonoff-Tasmota
 
+<<<<<<< HEAD
   Copyright (C) 2018  Theo Arends
+=======
+  Copyright (C) 2018  Theo Arends and Joachim Banzhaf
+>>>>>>> development
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,6 +28,7 @@
  *
  * I2C Addresses: 0x29 (low), 0x39 (float) or 0x49 (high)
  *
+<<<<<<< HEAD
  * Using library https://github.com/adafruit/TSL2561-Arduino-Library
 \*********************************************************************************************/
 
@@ -55,17 +60,38 @@ void Tsl2561Detect()
         delete tsl;
         tsl = 0;
       }
+=======
+ * Using library https://github.com/joba-1/Joba_Tsl2561
+\*********************************************************************************************/
+
+#include <Tsl2561Util.h>
+
+Tsl2561 Tsl(Wire);
+
+void Tsl2561Detect()
+{
+  if (!Tsl.available()) {
+    Tsl.begin();
+    if (Tsl.available()) {
+      snprintf_P(log_data, sizeof(log_data), S_LOG_I2C_FOUND_AT, "TSL2561", Tsl.address());
+      AddLog(LOG_LEVEL_DEBUG);
+>>>>>>> development
     }
   }
 }
 
 #ifdef USE_WEBSERVER
 const char HTTP_SNS_TSL2561[] PROGMEM =
+<<<<<<< HEAD
   "%s{s}TSL2561 " D_ILLUMINANCE "{m}%d " D_UNIT_LUX "{e}";  // {s} = <tr><th>, {m} = </th><td>, {e} = </td></tr>
+=======
+  "%s{s}TSL2561 " D_ILLUMINANCE "{m}%u.%03u " D_UNIT_LUX "{e}";  // {s} = <tr><th>, {m} = </th><td>, {e} = </td></tr>
+>>>>>>> development
 #endif  // USE_WEBSERVER
 
 void Tsl2561Show(boolean json)
 {
+<<<<<<< HEAD
   if (tsl) {
     union {
       uint32_t full;
@@ -93,6 +119,39 @@ void Tsl2561Show(boolean json)
     } else {
       snprintf_P(mqtt_data, sizeof(mqtt_data), HTTP_SNS_TSL2561, mqtt_data, illuminance);
 #endif  // USE_WEBSERVER
+=======
+  uint8_t id;
+  bool gain;
+  Tsl2561::exposure_t exposure;
+  uint16_t scaledFull, scaledIr;
+  uint32_t full, ir;
+  uint32_t milliLux;
+
+  if (Tsl.available()) {
+    if (Tsl.on()) {
+      if( Tsl.id(id)
+       && Tsl2561Util::autoGain(Tsl, gain, exposure, scaledFull, scaledIr)
+       && Tsl2561Util::normalizedLuminosity(gain, exposure, full = scaledFull, ir = scaledIr)
+       && Tsl2561Util::milliLux(full, ir, milliLux, Tsl2561::packageCS(id))) {
+
+        snprintf_P(log_data, sizeof(log_data), PSTR(D_ILLUMINANCE " g:%d, e:%d, f:%u, i:%u -> %u.%03u " D_UNIT_LUX),
+          gain, exposure, full, ir, milliLux/1000, milliLux%1000);
+        AddLog(LOG_LEVEL_DEBUG);
+
+        if (json) {
+          snprintf_P(mqtt_data, sizeof(mqtt_data), PSTR("%s,\"TSL2561\":{\"" D_JSON_ILLUMINANCE "\":%u.%03u}"),
+            mqtt_data, milliLux/1000, milliLux%1000);
+#ifdef USE_DOMOTICZ
+          DomoticzSensor(DZ_ILLUMINANCE, (milliLux+500)/1000);
+#endif  // USE_DOMOTICZ
+#ifdef USE_WEBSERVER
+        } else {
+          snprintf_P(mqtt_data, sizeof(mqtt_data), HTTP_SNS_TSL2561, mqtt_data, milliLux/1000, milliLux%1000);
+#endif  // USE_WEBSERVER
+        }
+      }
+      Tsl.off();
+>>>>>>> development
     }
   }
 }
@@ -125,5 +184,10 @@ boolean Xsns16(byte function)
   return result;
 }
 
+<<<<<<< HEAD
 #endif  // USE_TSL2561
 #endif  // USE_I2C
+=======
+#endif  // USE_TSL2561_JOBA
+#endif  // USE_I2C
+>>>>>>> development

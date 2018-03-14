@@ -96,6 +96,12 @@ uint8_t ModbusReceive(uint16_t *value)
       }
     }
   }
+<<<<<<< HEAD
+=======
+
+  AddLogSerial(LOG_LEVEL_DEBUG_MORE, buffer, len);
+
+>>>>>>> development
   if (len != sizeof(buffer)) {
     return 9;                  // 9 = Unexpected result
   }
