@@ -788,9 +788,9 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      0, 0, 0, 0
   },{ "BH OnOfre",         // BH OnOfre http://www.bhonofre.pt
      GPIO_USER,        // GPIO00 
-     GPIO_USER,        // GPIO01 
+     GPIO_TXD,        // GPIO01 
      GPIO_USER,        // GPIO02 
-     GPIO_USER,        // GPIO03 
+     GPIO_RXD,        // GPIO03 
      GPIO_REL1,        // GPIO04 RELAY ONE
      GPIO_REL2,        // GPIO05 RELAU TWO
      0, 0, 0, 0, 0, 0, // Flash connection
@@ -799,7 +799,7 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      GPIO_USER,        // GPIO14 
      GPIO_USER,        // GPIO15 
      GPIO_USER,        // GPIO16 
-     GPIO_ADC0         // ADC0   
+     GPIO_ADC0         // ADC0    
   }
 };
 
