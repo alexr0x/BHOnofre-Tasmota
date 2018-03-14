@@ -347,7 +347,6 @@ void StartWebserver(int type, IPAddress ipweb)
       WebServer->on("/up", HandleUpgradeFirmware);
       WebServer->on("/u1", HandleUpgradeFirmwareStart);  // OTA
       WebServer->on("/u2", HTTP_POST, HandleUploadDone, HandleUploadLoop);
-      WebServer->on("/u2", HTTP_OPTIONS, HandlePreflightRequest);
       WebServer->on("/cm", HandleHttpCommand);
       WebServer->on("/cs", HandleConsole);
       WebServer->on("/ax", HandleAjaxConsoleRefresh);
@@ -866,7 +865,8 @@ void HandleMqttConfiguration()
   page += FPSTR(HTTP_HEAD_STYLE);
   page += FPSTR(HTTP_FORM_MQTT);
   char str[sizeof(Settings.mqtt_client)];
-  page.replace(F("{m0"), GetMqttClient(str, MQTT_CLIENT_ID, sizeof(Settings.mqtt_client)));
+  GetMqttClient(str, MQTT_CLIENT_ID, sizeof(Settings.mqtt_client));
+  page.replace(F("{m0"), str);
   page.replace(F("{m1"), Settings.mqtt_host);
   page.replace(F("{m2"), String(Settings.mqtt_port));
   page.replace(F("{m3"), Settings.mqtt_client);
@@ -941,7 +941,7 @@ void HandleOtherConfiguration()
   page += FPSTR(HTTP_HEAD_STYLE);
   page += FPSTR(HTTP_FORM_OTHER);
   page.replace(F("{r1"), (Settings.flag.mqtt_enabled) ? F(" checked") : F(""));
-  uint8_t maxfn = (devices_present > MAX_FRIENDLYNAMES) ? MAX_FRIENDLYNAMES : (!devices_present) ? 1 : devices_present;
+  uint8_t maxfn = (devices_present > MAX_FRIENDLYNAMES) ? MAX_FRIENDLYNAMES : devices_present;
   for (byte i = 0; i < maxfn; i++) {
     page += FPSTR(HTTP_FORM_OTHER2);
     page.replace(F("{1"), String(i +1));
@@ -1262,7 +1262,7 @@ void HandleUploadDone()
 
   WifiConfigCounter();
   restart_flag = 0;
-  MqttRetryCounter(0);
+  mqtt_retry_counter = 0;
 
   String page = FPSTR(HTTP_HEAD);
   page.replace(F("{v}"), FPSTR(S_INFORMATION));
@@ -1324,14 +1324,16 @@ void HandleUploadLoop()
     snprintf_P(log_data, sizeof(log_data), PSTR(D_LOG_UPLOAD D_FILE " %s ..."), upload.filename.c_str());
     AddLog(LOG_LEVEL_INFO);
     if (!upload_file_type) {
-      MqttRetryCounter(60);
+      mqtt_retry_counter = 60;
 #ifdef USE_EMULATION
       UdpDisconnect();
 #endif  // USE_EMULATION
 #ifdef USE_ARILUX_RF
       AriluxRfDisable();  // Prevent restart exception on Arilux Interrupt routine
 #endif  // USE_ARILUX_RF
-      if (Settings.flag.mqtt_enabled) MqttDisconnect();
+      if (Settings.flag.mqtt_enabled) {
+        MqttClient.disconnect();
+      }
       uint32_t maxSketchSpace = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
       if (!Update.begin(maxSketchSpace)) {         //start with max available size
         upload_error = 2;
@@ -1407,21 +1409,13 @@ void HandleUploadLoop()
     }
   } else if (UPLOAD_FILE_ABORTED == upload.status) {
     restart_flag = 0;
-    MqttRetryCounter(0);
+    mqtt_retry_counter = 0;
     upload_error = 7;
     if (!upload_file_type) {
       Update.end();
     }
   }
   delay(0);
-}
-
-void HandlePreflightRequest()
-{
-  WebServer->sendHeader(F("Access-Control-Allow-Origin"), F("*"));
-  WebServer->sendHeader(F("Access-Control-Allow-Methods"), F("GET, POST"));
-  WebServer->sendHeader(F("Access-Control-Allow-Headers"), F("authorization"));
-  WebServer->send(200, FPSTR(HDR_CTYPE_HTML), "");
 }
 
 void HandleHttpCommand()
@@ -1596,7 +1590,7 @@ void HandleInformation()
   func += F(D_PROGRAM_VERSION "}2"); func += my_version;
   func += F("}1" D_BUILD_DATE_AND_TIME "}2"); func += GetBuildDateAndTime();
   func += F("}1" D_CORE_AND_SDK_VERSION "}2" ARDUINO_ESP8266_RELEASE "/"); func += String(ESP.getSdkVersion());
-  func += F("}1" D_UPTIME "}2"); func += GetDateAndTime(DT_UPTIME);
+  func += F("}1" D_UPTIME "}2"); func += GetUptime();
   snprintf_P(stopic, sizeof(stopic), PSTR(" at %X"), GetSettingsAddress());
   func += F("}1" D_FLASH_WRITE_COUNT "}2"); func += String(Settings.save_flag); func += stopic;
   func += F("}1" D_BOOT_COUNT "}2"); func += String(Settings.bootcount);
@@ -1631,7 +1625,7 @@ void HandleInformation()
     func += F("}1" D_MQTT_USER "}2"); func += Settings.mqtt_user;
     func += F("}1" D_MQTT_TOPIC "}2"); func += Settings.mqtt_topic;
     func += F("}1" D_MQTT_GROUP_TOPIC "}2"); func += Settings.mqtt_grptopic;
-    GetTopic_P(stopic, CMND, mqtt_topic, "");
+    GetTopic_P(stopic, CMND, Settings.mqtt_topic, "");
     func += F("}1" D_MQTT_FULL_TOPIC "}2"); func += stopic;
 
   } else {
